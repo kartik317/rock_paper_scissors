@@ -1,0 +1,94 @@
+body{
+  background-color: #000000;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+#main_container{
+  text-align: center;
+  border: 2px solid;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 5px;
+  position: relative;
+}
+
+#main_container::after, #main_container::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: conic-gradient(from var(--angle), #00ff00, #ff0000, #0000ff, #00ff00);
+  top: 50%;
+  left: 50%;
+  border-radius: 5px;
+  border: none;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 4px;
+  animation: 3s spin linear infinite;
+}
+
+#main_container::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  
+  to{
+    --angle: 360deg;
+  }
+}
+
+h1{
+  font-size: 2rem;
+}
+
+#choices_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#choices_container button{
+  font-size: 4em;
+  border: none;
+  margin: 5px;
+  border-radius: 250px;
+  background-color: #14abde;
+}
+
+#choices_container button:hover{
+  background-color: #5fd3fa;
+  cursor: pointer;
+}
+
+#choices_container button:active{
+  background-color: #83defc;
+}
+
+#win_lose_info{
+  font-size: 1.5em;
+  color: #00ff00;
+}
+
+#info{
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#playerinfo{
+  color: #00ff00;
+}
+
+#computerinfo{
+  color: #ff0000;
+}
